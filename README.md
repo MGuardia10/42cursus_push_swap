@@ -1,1 +1,1 @@
-# 42cursus_push_swap
+# 42Madrid - push_swap
