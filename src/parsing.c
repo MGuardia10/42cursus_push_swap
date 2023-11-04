@@ -6,22 +6,45 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 10:47:58 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/04 17:56:01 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:31:11 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void    ft_print_stack(char **stack)
-// {
-//     int i = 0;
+static void    fill_stack(t_stack **stack_a, long num)
+{
+    t_stack *last_node;
+    t_stack *new_node;
+    static int     i;
 
-//     while (stack[i])
-//     {
-//         ft_printf("%s\n", stack[i]);
-//         i++;
-//     }
-// }
+    last_node = ft_stacklast(*stack_a);
+    new_node = malloc(sizeof(t_stack));
+    if (!new_node)
+        return (free_matrix((void **)stack_a));
+    if (!last_node)
+    {
+        *stack_a = new_node;
+        new_node->prev = NULL;
+    }
+    else
+    {
+        last_node->next = new_node;
+        new_node->prev = last_node;
+    }
+    new_node->num = num;
+    new_node->index = i;
+    i++;
+}
+
+static void    check_fit_int(long result, char **split)
+{
+    if (result < INT_MIN || result > INT_MAX)
+    {
+        free_matrix((void **)split);
+        ft_error();
+    }
+}
 
 static long    ft_atol_strict(char **split, long i)
 {
@@ -47,26 +70,21 @@ static long    ft_atol_strict(char **split, long i)
         }
         result = result * 10 + split[i][j++] - '0';
     }
-    if ((result * sign) < INT_MIN || (result * sign) > INT_MAX)
-    {
-        free_matrix((void **)split);
-        ft_error();
-    }
-    return (result * sign);
+    result = result * sign;
+    check_fit_int(result, split);
+    return (result);
 }
 
-void    manage_strings(t_stack **stack_a, char **split)
+static void    manage_strings(t_stack **stack_a, char **split)
 {
     long    i;
     long    num;
 
-    (void)stack_a;
     i = 0;
     while (split[i])
     {
         num = ft_atol_strict(split, i);
-        //fill_stack(stack_a, num);
-        ft_printf("%d\n", num);
+        fill_stack(stack_a, num);
         i++;
     }
 }
@@ -78,20 +96,18 @@ void    ft_parse_args(char **argv, t_stack **stack_a)
     long    num;
 
     i = 0;
-    (void)stack_a;
     while (argv[++i])
     {
         split = ft_split(argv[i], ' ');
         if (!split[1])
-        {
+        { 
             if (!split[0])
             {
                 free_matrix((void **)split);
                 ft_error();
             }
             num = ft_atol_strict(split, 0);
-            //fill_stack(stack_a, num);
-            ft_printf("%d\n", num);
+            fill_stack(stack_a, num);
         }
         else
             manage_strings(stack_a, split);

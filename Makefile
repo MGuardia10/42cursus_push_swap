@@ -6,23 +6,24 @@ NAME_BONUS = checker
 LIBFT = libft/libft.a
 
 # SOURCE FILES
-SRC_DIR			= src/
-SRC_BONUS_DIR	= src/bonus/
-SRC_FILES		= push_swap.c
-BONUS_FILES		= checker.c
-SRC				= $(addprefix $(SRC_DIR), $(SRC_FILES))
-SRC_BONUS		= $(addprefix $(SRC_BONUS_DIR), $(BONUS_FILES))
+SRC_DIR			=	src/
+SRC_BONUS_DIR	=	checker/
+SRC_FILES		= 	main.c \
+					parsing.c \
+					list_utils.c
+BONUS_FILES		=	checker.c
+SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC_BONUS		=	$(addprefix $(SRC_BONUS_DIR), $(BONUS_FILES))
 
 # OBJECT FILES
-OBJ_FILES 		= ${SRC:.c=.o}
-OBJ_BONUS_FILES = ${SRC_BONUS:.c=.o}
+OBJ_FILES 		= $(SRC:.c=.o)
+OBJ_BONUS_FILES = $(SRC_BONUS:.c=.o)
 
 # COMPILER OPTIONS
 CC		= gcc
 FLAGS	= -Wall -Werror -Wextra
-INCLUDE = -I include
+INCLUDE = -I includes
 RM		= rm -f
-DEBUG	= -g -fsanitize=address
 
 # COLORS
 RED		=	\033[91;1m
@@ -38,7 +39,7 @@ all:	$(NAME)
 $(NAME):	$(OBJ_FILES)
 	@make -C libft
 	@echo "$(PINK)Compiling the PUSH_SWAP program.$(CLEAR)"
-	$(CC) $(FLAGS) $(OBJ_FILES) $(INCLUDE) $(LIBFT) -o $(NAME) $(DEBUG)
+	$(CC) $(FLAGS) $(OBJ_FILES) $(INCLUDE) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)[OK]\n$(CLEAR)$(GREEN)Success!$(CLEAR)\n"
 
 bonus:	$(NAME) $(NAME_BONUS)
@@ -46,15 +47,8 @@ bonus:	$(NAME) $(NAME_BONUS)
 $(NAME_BONUS):	$(OBJ_BONUS_FILES)
 	@make -C libft
 	@echo "$(PINK)Compiling the CHECKER program.$(CLEAR)"
-	$(CC) $(FLAGS) $(OBJ_BONUS_FILES) $(INCLUDE) $(LIBFT) -o $(NAME_BONUS) $(DEBUG)
+	$(CC) $(FLAGS) $(OBJ_BONUS_FILES) $(INCLUDE) $(LIBFT) -o $(NAME_BONUS)
 	@echo "$(GREEN)[OK]\n$(CLEAR)$(GREEN)Success!$(CLEAR)\n"
-
-
-# $(NAME_C_BONUS):	$(OBJ_C_BONUS)
-# 	@make -C libft
-# 	@echo "$(PINK)Compiling the Client.$(CLEAR)"
-# 	$(CC) $(FLAGS) $(OBJ_C_BONUS) $(INCLUDE) $(LIBFT) -o $(NAME_C_BONUS) $(DEBUG)
-# 	@echo "$(GREEN)[OK]\n$(CLEAR)$(GREEN)Success!$(CLEAR)\n"
 
 %.o: %.c
 	$(CC) $(FLAGS) -c -o $@ $<
