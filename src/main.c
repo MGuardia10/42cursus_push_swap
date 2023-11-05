@@ -6,13 +6,13 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:19 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/04 20:28:58 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:41:01 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    free_matrix(void **p)
+void    free_matrix(char **p)
 {
     int i;
 
@@ -37,7 +37,7 @@ void    ft_print_stack(t_stack *stack)
     aux = stack;
     while (aux)
     {
-        ft_printf("%d\n", aux->index);
+        ft_printf("%d\n", aux->num);
         aux = aux->next;
     }
 }
@@ -53,18 +53,13 @@ int main(int argc, char **argv)
     atexit(f);
     if (argc > 1)
     {
-        // parsing argv
         ft_parse_args(argv, &stack_a);
-        //check_doubles(&stack_a);
+        check_doubles(stack_a);
         // push swap logic
+        
+
         ft_print_stack(stack_a);
         ft_stack_clear(&stack_a);
     }
     return (0);
 }
-
-// validaciones
-// - solo 1 arg -> no hace nada OK
-// - checkear que sean solo numeros -> error OK
-// - num se sale del rango de INT -> error OK
-// - checkear que no haya repetidos -> error PENDING

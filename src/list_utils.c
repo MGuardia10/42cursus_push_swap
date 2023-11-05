@@ -6,13 +6,38 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:38:51 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/04 20:26:52 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:38:59 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack *ft_stacklast(t_stack *stack)
+void    fill_stack(t_stack **stack_a, long num)
+{
+    t_stack *last_node;
+    t_stack *new_node;
+    static int     i;
+
+    last_node = ft_stack_last(*stack_a);
+    new_node = malloc(sizeof(t_stack));
+    if (!new_node)
+        return (ft_stack_clear(stack_a));
+    if (!last_node)
+    {
+        *stack_a = new_node;
+        new_node->prev = NULL;
+    }
+    else
+    {
+        last_node->next = new_node;
+        new_node->prev = last_node;
+    }
+    new_node->num = num;
+    new_node->index = i;
+    i++;
+}
+
+t_stack *ft_stack_last(t_stack *stack)
 {
     t_stack *aux;
 
@@ -32,4 +57,17 @@ void    ft_stack_clear(t_stack **stack)
     ft_stack_clear(&(*stack)->next);
     free(*stack);
     *stack = NULL;
+}
+
+int	ft_stack_size(t_stack *stack)
+{
+	int		count;
+
+	count = 0;
+	while (stack != NULL)
+	{
+		stack = stack->next;
+		count++;
+	}
+	return (count);
 }
