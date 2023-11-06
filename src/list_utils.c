@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:38:51 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/05 12:38:59 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:20:44 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void    fill_stack(t_stack **stack_a, long num)
 {
     t_stack *last_node;
     t_stack *new_node;
-    static int     i;
 
     last_node = ft_stack_last(*stack_a);
     new_node = malloc(sizeof(t_stack));
@@ -33,8 +32,6 @@ void    fill_stack(t_stack **stack_a, long num)
         new_node->prev = last_node;
     }
     new_node->num = num;
-    new_node->index = i;
-    i++;
 }
 
 t_stack *ft_stack_last(t_stack *stack)
@@ -70,4 +67,12 @@ int	ft_stack_size(t_stack *stack)
 		count++;
 	}
 	return (count);
+}
+
+void	ft_stack_add_front(t_stack **stack, t_stack *new)
+{
+	if (!stack || !new)
+		return ;
+	new->next = *stack;
+	*stack = new;
 }

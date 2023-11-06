@@ -10,7 +10,8 @@ SRC_DIR			=	src/
 SRC_BONUS_DIR	=	checker/
 SRC_FILES		= 	main.c \
 					parsing.c \
-					list_utils.c
+					list_utils.c \
+					moves.c
 BONUS_FILES		=	checker.c
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_BONUS		=	$(addprefix $(SRC_BONUS_DIR), $(BONUS_FILES))

@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:55:30 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/04 11:52:20 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:52:53 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ void	clear_mem(t_gnl **list, t_gnl *rest_node, char *str);
 // OTHER UTIL FUNCTIONS
 void	ft_custom_error(char *error);
 void    ft_error(void);
+void    ft_free_matrix(char **p);
 
 #endif
