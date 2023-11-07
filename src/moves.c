@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:13:26 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/06 17:21:30 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/06 22:56:47 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void    push(t_stack **stack_src, t_stack **stack_dst)
     aux = *stack_src;
     new_node->num = (*stack_src)->num;
     new_node->prev = NULL;
-    *stack_src = (*stack_src)->next;
     (*stack_src)->prev = NULL;
-    free(aux);
+    if ((*stack_src)->next)
+        *stack_src = (*stack_src)->next;
+    else
+        *stack_src = NULL;
     if (!(*stack_dst))
     {
         *stack_dst = new_node;
@@ -49,6 +51,7 @@ void    push(t_stack **stack_src, t_stack **stack_dst)
     }
     else
         ft_stack_add_front(stack_dst, new_node);
+    free(aux);
 }
 
 void    rotate(t_stack **stack)

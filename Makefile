@@ -11,7 +11,11 @@ SRC_BONUS_DIR	=	checker/
 SRC_FILES		= 	main.c \
 					parsing.c \
 					list_utils.c \
-					moves.c
+					moves.c \
+					choose_move.c \
+					small_size_algo.c \
+					utils_1.c \
+					utils_2.c
 BONUS_FILES		=	checker.c
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_BONUS		=	$(addprefix $(SRC_BONUS_DIR), $(BONUS_FILES))
