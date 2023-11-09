@@ -14,8 +14,10 @@ SRC_FILES		= 	main.c \
 					moves.c \
 					choose_move.c \
 					small_size_algo.c \
+					big_size_algo.c \
 					utils_1.c \
 					utils_2.c
+# big_size_algo.c
 BONUS_FILES		=	checker.c
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_BONUS		=	$(addprefix $(SRC_BONUS_DIR), $(BONUS_FILES))
@@ -42,7 +44,7 @@ CLEAR	=	\033[0m
 all:	$(NAME)
 
 $(NAME):	$(OBJ_FILES)
-	@make -C libft
+	@make -sC libft
 	@echo "$(PINK)Compiling the PUSH_SWAP program.$(CLEAR)"
 	$(CC) $(FLAGS) $(OBJ_FILES) $(INCLUDE) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)[OK]\n$(CLEAR)$(GREEN)Success!$(CLEAR)\n"
@@ -50,7 +52,7 @@ $(NAME):	$(OBJ_FILES)
 bonus:	$(NAME) $(NAME_BONUS)
 
 $(NAME_BONUS):	$(OBJ_BONUS_FILES)
-	@make -C libft
+	@make -sC libft
 	@echo "$(PINK)Compiling the CHECKER program.$(CLEAR)"
 	$(CC) $(FLAGS) $(OBJ_BONUS_FILES) $(INCLUDE) $(LIBFT) -o $(NAME_BONUS)
 	@echo "$(GREEN)[OK]\n$(CLEAR)$(GREEN)Success!$(CLEAR)\n"
@@ -60,13 +62,13 @@ $(NAME_BONUS):	$(OBJ_BONUS_FILES)
 
 clean:
 	@echo "$(PINK)Removing compiled files.$(CLEAR)"
-	@make clean -C libft
+	@make clean -sC libft
 	$(RM) $(OBJ_FILES)
 	$(RM) $(OBJ_BONUS_FILES)
 	@echo "$(GREEN)Object files removed correctly\n$(CLEAR)"
 
 fclean: clean
-	@make fclean -C libft
+	@make fclean -sC libft
 	@echo "$(PINK)Removing exec. files.$(CLEAR)"
 	$(RM) $(NAME)
 	$(RM) $(NAME_BONUS)

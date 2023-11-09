@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:09:07 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/07 10:27:02 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:30:10 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    algo_10(t_stack **stack_a, t_stack **stack_b, int size)
         int     proxy;
         t_stack *second_node;
 
-        while (size > 3)
+        while (size > 3 && !ft_is_sort(*stack_a))
         {
             min_num = get_min(*stack_a);
             second_node = (*stack_a)->next;
@@ -67,7 +67,7 @@ void    algo_10(t_stack **stack_a, t_stack **stack_b, int size)
         }
 }
 
-void    small_size_algo(t_stack **stack_a, t_stack **stack_b, int size)
+void    small_size_algo(t_stack **stack_a, t_stack **stack_b, int size, int f)
 {
     if (size == 2)
     {
@@ -81,7 +81,10 @@ void    small_size_algo(t_stack **stack_a, t_stack **stack_b, int size)
         algo_10(stack_a, stack_b, size);
         if (!ft_is_sort(*stack_a))
             sort_three(stack_a);
-        while (*stack_b)
-            choose_move(stack_a, stack_b, "pa");
+        if (f)
+        {
+            while (*stack_b)
+                choose_move(stack_a, stack_b, "pa");
+        }
     }
 }

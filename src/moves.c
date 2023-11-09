@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 13:13:26 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/06 22:56:47 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:48:09 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ void    push(t_stack **stack_src, t_stack **stack_dst)
 
     if (!stack_dst || !(*stack_src))
         return ;
-    // revisar leaksssss
     new_node = malloc(sizeof(t_stack));
     if (!new_node)
         return ;
-    aux = *stack_src;
+    aux = *stack_src; // nodo stack a
     new_node->num = (*stack_src)->num;
     new_node->prev = NULL;
     (*stack_src)->prev = NULL;
@@ -69,7 +68,7 @@ void    rotate(t_stack **stack)
     while (aux1->next)
         aux1 = aux1->next;
     aux1->next = aux2;
-    aux1->next->prev = aux1;
+    aux2->prev = aux1;
     aux1->next->next = NULL;
 }
 

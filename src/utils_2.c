@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:31 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/07 10:57:23 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:04:33 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,17 @@ int get_index(t_stack *stack, long min)
         index++;
     }
     return (-1);
+}
+
+int ft_divider(float size, float div)
+{
+    int   k;
+    float res;
+
+    res = size / div;
+    k = (int) res;
+    if ((res - k) >= 0.5)
+		return ((int)res + 1);
+	else
+		return ((int)res);
 }

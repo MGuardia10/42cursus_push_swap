@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:19 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/07 10:57:33 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:21:37 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 static void    ft_manage_algorithms(t_stack **stack_a, t_stack **stack_b, int size)
 {
     if (size <= 10)
-        small_size_algo(stack_a, stack_b, size);
-    // else if (size > 10 && size <= 200)
-    //     big_size_algo(stack_a, stack_b, size, 4);
-    // else
-    //     big_size_algo(stack_a, stack_b, size, 8);
+        small_size_algo(stack_a, stack_b, size, 1);
+    else if (size > 10 && size <= 200)
+        big_size_algo(stack_a, stack_b, size, 4);
+    else
+        big_size_algo(stack_a, stack_b, size, 8);
 }
 
 int main(int argc, char **argv)
