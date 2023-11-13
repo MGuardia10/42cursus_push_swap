@@ -6,16 +6,15 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:04:17 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/04 18:07:04 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:53:43 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    (void)argc;
-    (void)argv;
-    
-    return (0);
+	(void)argc;
+	(void)argv;
+	return (0);
 }

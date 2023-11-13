@@ -10,7 +10,8 @@ SRC_DIR			=	src/
 SRC_BONUS_DIR	=	checker/
 SRC_FILES		= 	main.c \
 					parsing.c \
-					list_utils.c \
+					list_utils_1.c \
+					list_utils_2.c \
 					moves.c \
 					choose_move.c \
 					sort_three.c \

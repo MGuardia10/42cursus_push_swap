@@ -6,27 +6,21 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:52:12 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/06 12:54:04 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:52:10 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * The function `ft_free_matrix` frees the memory allocated for a matrix of strings.
- * 
- * @param p The parameter `p` is a pointer to a pointer to a character, which represents a matrix or a
- * 2D array of characters.
- */
-void    ft_free_matrix(char **p)
+void	ft_free_matrix(char **p)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (p[i])
-    {
-        free(p[i]);
-        i++;
-    }
-    free(p);
+	i = 0;
+	while (p[i])
+	{
+		free(p[i]);
+		i++;
+	}
+	free(p);
 }

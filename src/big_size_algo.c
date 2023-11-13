@@ -6,17 +6,177 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:11:50 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 11:41:15 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/13 21:04:52 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    big_size_algo(t_stack **stack_a, t_stack **stack_b, int size, int div)
+void    push_two_to_b(t_stack **stack_a, t_stack **stack_b, int *size_a)
 {
-    // ft_printf("stack_a\n-------\n");
-    // ft_print_stack(*stack_a);
-    // ft_printf("\nstack_a\n-------\n");
-    // ft_print_stack(*stack_a);
+    choose_move(stack_a, stack_b, "pb");
+    (*size_a)--;
+    if ((*size_a) > 3)
+    {
+        choose_move(stack_a, stack_b, "pb");
+        (*size_a)--;
+    }
+}
+
+int	count_upper_moves(int count, int index)
+{
+	while (count > 0 && index > 0)
+	{
+		count--;
+		index--;
+	}
+	if (count == 0)
+		return (index);
+	else
+		return (0);
+}
+
+int	count_lower_moves(int count, int index, t_stack *b)
+{
+	while ((count > 0) && ((ft_stack_size(b) - index) > 0))
+	{
+		count--;
+		index++;
+	}
+	if (count == 0)
+		return (ft_stack_size(b) - index);
+	else
+		return (0);
+}
+
+int	count_b_moves(t_stack *node, t_stack *b, int proxy_b, int count, int flag)
+{
+	int	index;
+
+	index = node->idx;
+	if (flag == 0 && node->idx <= proxy_b)
+		return (count_upper_moves(count, index));
+	else if (flag == 1 && node->idx > proxy_b)
+		return (count_lower_moves(count, index, b));
+	else if (node->idx <= proxy_b)
+		return (index);
+	else
+		return (ft_stack_size(b) - index);
+}
+
+t_stack	*find_closest(t_stack *node, t_stack *b)
+{
+	t_stack	*aux;
+	t_stack	*closest;
+
+	aux = b;
+	closest = NULL;
+	while (aux && !closest)
+	{
+		if (aux->prev == NULL && node->num < aux->num)
+			closest = aux;
+		else if (node->num < aux->prev->num && node->num > aux->num)
+			closest = aux;
+		else if (!aux->next)
+			closest = aux;
+		else
+			aux = aux->next;
+	}
+	return (closest);
+}
+
+int	ft_count_moves(t_stack *node, t_stack *a, t_stack *b, int proxy_a)
+{
+	int		count;
+	int		flag;
+	t_stack	*closest_node_b;
+	int		proxy_b;
+
+	count = 0;
+	flag = 0;
+	closest_node_b = find_closest(node, b);
+	proxy_b = ft_stack_size(b) / 2;
+	if (node->idx <= proxy_a)
+	{
+		count = node->idx;
+		flag = 0;
+	}
+	else
+	{
+		count = ft_stack_size(a) - node->idx;
+		flag = 1;
+	}
+	count += count_b_moves(closest_node_b, b, proxy_b, count, flag);
+	return (count);
 
 }
+
+t_stack	*find_cheapest(t_stack **stack_a, t_stack **stack_b, int proxy)
+{
+	t_stack	*aux_a;
+	t_stack	*cheapest;
+	int		count;
+	int		min_count;
+
+	aux_a = *stack_a;
+	min_count = INT_MAX;
+	while (aux_a)
+	{
+		count = ft_count_moves(aux_a, *stack_a, *stack_b, proxy);
+		if (count < min_count)
+		{
+			min_count = count;
+			cheapest = aux_a;
+		}
+		aux_a = aux_a->next;
+	}
+	return (cheapest);
+}
+
+void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	t_stack	*cheapest_node;
+	int		proxy;
+
+	while (size > 3)
+	{
+		get_idxs(*stack_a, *stack_b);
+		proxy = size / 2;
+		if (ft_is_max_or_min(*stack_a, *stack_b))
+		{
+			rotate_b_to_max(stack_a, stack_b, proxy);
+			choose_move(stack_a, stack_b, "pb");
+		}
+		else
+		{
+			cheapest_node = find_cheapest(stack_a, stack_b, proxy);
+			// while (cheapest_node != (*stack_a))
+			// 	rotate_ab_to_cheapest(stack_a, stack_b, cheapest_node);
+			// choose_move(stack_a, stack_b, "pb");
+			size = 4;
+		}
+		size--;
+	}
+}
+
+void    big_size_algo(t_stack **stack_a, t_stack **stack_b, int size)
+{
+    push_two_to_b(stack_a, stack_b, &size);
+    if (size != 3)
+        push_till_three(stack_a, stack_b, size);
+	// if (!ft_is_sort(*stack_a))
+    // 	sort_three(stack_a, stack_b);
+    // push_to_a();
+    // if (!ft_is_sort_size(stack_a, ft_stack_size(*stack_a)))
+    //     rotate_till_is_sort(stack_a);
+}
+
+
+/*
+- get_idxs() OK
+- buscar el cheapest node 
+- nbr y el idx y el num moves
+- si el nodo idx > size /2 -> rra / rrr
+- si el nodo idx <= size /2 -> ra / rr
+- en cada push restar uno a size y recalcular indices
+*/

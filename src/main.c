@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:19 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 10:28:12 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:54:54 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,42 @@
 //     system("leaks -q push_swap");
 // }
 
-void    ft_manage_algorithms(t_stack **stack_a, t_stack **stack_b, int size)
+void	ft_manage_algorithms(t_stack **stack_a, t_stack **stack_b, int size)
 {
-    if (size == 2 && ((*stack_a)->num > (*stack_a)->next->num))
-        choose_move(stack_a, stack_b, "sa");
-    else if (size == 3)
-        sort_three(stack_a, stack_b);
-    else
-        big_size_algo(stack_a, stack_b, size, 4);
+	if (size == 2 && ((*stack_a)->num > (*stack_a)->next->num))
+		choose_move(stack_a, stack_b, "sa");
+	else if (size == 3)
+		sort_three(stack_a, stack_b);
+	else
+		big_size_algo(stack_a, stack_b, size);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_stack *stack_a;
-    t_stack *stack_b;
-    int     size;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		size;
 
-    //atexit(f);
-    stack_a = NULL;
-    stack_b = NULL;
-    if (argc > 1)
-    {
-        ft_parse_args(argv, &stack_a);
-        size = ft_stack_size(stack_a);
-        if (ft_is_sort_size(stack_a, size))
-        {
-            ft_stack_clear(&stack_a);
-            exit(0);
-        }
-        ft_manage_algorithms(&stack_a, &stack_b, size);
-
-        // ft_printf("stack_a\n-------\n");
-        // ft_print_stack(stack_a);
-        // ft_printf("\nstack_b\n-------\n");
-        // ft_print_stack(stack_b);
-
-        ft_stack_clear(&stack_a);
-        ft_stack_clear(&stack_b);
-        return (0);
-    }
-    return (1);
+	//atexit(f);
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc > 1)
+	{
+		ft_parse_args(argv, &stack_a);
+		size = ft_stack_size(stack_a);
+		if (ft_is_sort_size(stack_a, size))
+		{
+			ft_stack_clear(&stack_a);
+			exit(0);
+		}
+		ft_manage_algorithms(&stack_a, &stack_b, size);
+		ft_printf("stack_a\n-------\n");
+		ft_print_stack(stack_a);
+		ft_printf("\nstack_b\n-------\n");
+		ft_print_stack(stack_b);
+		ft_stack_clear(&stack_a);
+		ft_stack_clear(&stack_b);
+		return (0);
+	}
+	return (1);
 }

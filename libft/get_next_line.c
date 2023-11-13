@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/13 14:50:39 by mguardia          #+#    #+#             */
+/*   Updated: 2023/11/13 14:50:42 by mguardia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 t_gnl	*ft_lstlast_gnl(t_gnl *lst)
@@ -74,15 +86,6 @@ void	clean_list(t_gnl **list)
 	clear_mem(list, rest_node, str);
 }
 
-/**
- * The function `get_next_line` reads a line from a file descriptor and returns it as a string.
- * 
- * @param fd The parameter "fd" is an integer representing the file descriptor of the file you want to
- * read from.
- * 
- * @return a pointer to a character, which represents the next line read from the file descriptor
- * specified by `fd`.
- */
 char	*get_next_line(int fd)
 {
 	static t_gnl	*list;

@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:26:04 by mguardia          #+#    #+#             */
-/*   Updated: 2023/10/30 20:25:48 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:45:57 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ static size_t	count_digits(int n)
 	return (count);
 }
 
-/**
- * The function `ft_itoa` converts an integer into a string representation.
- * 
- * @param n The parameter `n` is an integer that we want to convert to a string.
- * 
- * @return a dynamically allocated string that represents the integer value passed as an argument.
- */
 char	*ft_itoa(int n)
 {
 	size_t	count;
