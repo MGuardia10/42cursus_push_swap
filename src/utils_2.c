@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:31 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/08 11:04:33 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/11 19:38:09 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,20 @@ int ft_divider(float size, float div)
 		return ((int)res + 1);
 	else
 		return ((int)res);
+}
+
+void    find_rotate_move(t_stack **stack_a, t_stack **stack_b, long nbr)
+{
+    int proxy;
+    int index;
+    
+    while ((*stack_a)->num != nbr)
+    {
+        proxy = ft_stack_size(*stack_a) / 2;
+        index = get_index(*stack_a, nbr);
+        if (proxy >= index)
+            choose_move(stack_a, stack_b, "ra");
+        else
+            choose_move(stack_a, stack_b, "rra");
+    }
 }

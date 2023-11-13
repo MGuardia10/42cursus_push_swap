@@ -13,7 +13,7 @@ SRC_FILES		= 	main.c \
 					list_utils.c \
 					moves.c \
 					choose_move.c \
-					small_size_algo.c \
+					sort_three.c \
 					big_size_algo.c \
 					utils_1.c \
 					utils_2.c
