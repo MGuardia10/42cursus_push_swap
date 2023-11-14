@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:19 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 14:54:54 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:43:32 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int	main(int argc, char **argv)
 			exit(0);
 		}
 		ft_manage_algorithms(&stack_a, &stack_b, size);
-		ft_printf("stack_a\n-------\n");
-		ft_print_stack(stack_a);
-		ft_printf("\nstack_b\n-------\n");
-		ft_print_stack(stack_b);
+		// ft_printf("stack_a\n-------\n");
+		// ft_print_stack(stack_a);
+		// ft_printf("\nstack_b\n-------\n");
+		// ft_print_stack(stack_b);
 		ft_stack_clear(&stack_a);
 		ft_stack_clear(&stack_b);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:11:50 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 21:04:52 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:53:56 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int	count_b_moves(t_stack *node, t_stack *b, int proxy_b, int count, int flag)
 	index = node->idx;
 	if (flag == 0 && node->idx <= proxy_b)
 		return (count_upper_moves(count, index));
-	else if (flag == 1 && node->idx > proxy_b)
+	else if (flag == 1 && node->idx >= proxy_b)
 		return (count_lower_moves(count, index, b));
-	else if (node->idx <= proxy_b)
+	else if (node->idx < proxy_b)
 		return (index);
 	else
 		return (ft_stack_size(b) - index);
@@ -71,18 +71,23 @@ t_stack	*find_closest(t_stack *node, t_stack *b)
 
 	aux = b;
 	closest = NULL;
-	while (aux && !closest)
-	{
-		if (aux->prev == NULL && node->num < aux->num)
-			closest = aux;
-		else if (node->num < aux->prev->num && node->num > aux->num)
-			closest = aux;
-		else if (!aux->next)
-			closest = aux;
-		else
-			aux = aux->next;
-	}
-	return (closest);
+    if (ft_is_max_or_min(node, b))
+        closest = find_biggest(b);
+    else
+    {
+        while (aux && !closest)
+        {
+            if (aux->prev == NULL && node->num < aux->num)
+                closest = aux;
+            else if (aux->prev && node->num < aux->prev->num && node->num > aux->num)
+                closest = aux;
+            else if (!aux->next)
+                closest = aux;
+            else
+                aux = aux->next;
+        }
+    }
+    return (closest);
 }
 
 int	ft_count_moves(t_stack *node, t_stack *a, t_stack *b, int proxy_a)
@@ -95,6 +100,7 @@ int	ft_count_moves(t_stack *node, t_stack *a, t_stack *b, int proxy_a)
 	count = 0;
 	flag = 0;
 	closest_node_b = find_closest(node, b);
+    printf("\nnbr closest node -> %ld", closest_node_b->num);
 	proxy_b = ft_stack_size(b) / 2;
 	if (node->idx <= proxy_a)
 	{
@@ -107,6 +113,8 @@ int	ft_count_moves(t_stack *node, t_stack *a, t_stack *b, int proxy_a)
 		flag = 1;
 	}
 	count += count_b_moves(closest_node_b, b, proxy_b, count, flag);
+    printf("\nnbr candidate node -> %ld", node->num);
+    printf("\ntotal count -> %d\n", count);
 	return (count);
 
 }
@@ -133,6 +141,11 @@ t_stack	*find_cheapest(t_stack **stack_a, t_stack **stack_b, int proxy)
 	return (cheapest);
 }
 
+// void    rotate_ab_to_cheapest(t_stack **a, t_stack **b, t_stack *cheap, int proxy)
+// {
+
+// }
+
 void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	t_stack	*cheapest_node;
@@ -149,11 +162,16 @@ void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size)
 		}
 		else
 		{
+            ft_printf("stack_a\n-------\n");
+            ft_print_stack(*stack_a);
+            ft_printf("\nstack_b\n-------\n");
+            ft_print_stack(*stack_b);
 			cheapest_node = find_cheapest(stack_a, stack_b, proxy);
+            printf("\nnbr chepaest node -> %ld", cheapest_node->num);
+            printf("\nidx chepaest node -> %d\n", cheapest_node->idx);
 			// while (cheapest_node != (*stack_a))
-			// 	rotate_ab_to_cheapest(stack_a, stack_b, cheapest_node);
-			// choose_move(stack_a, stack_b, "pb");
-			size = 4;
+			//     rotate_ab_to_cheapest(stack_a, stack_b, cheapest_node, proxy);
+			choose_move(stack_a, stack_b, "pb");
 		}
 		size--;
 	}
@@ -174,7 +192,7 @@ void    big_size_algo(t_stack **stack_a, t_stack **stack_b, int size)
 
 /*
 - get_idxs() OK
-- buscar el cheapest node 
+- buscar el cheapest node OK
 - nbr y el idx y el num moves
 - si el nodo idx > size /2 -> rra / rrr
 - si el nodo idx <= size /2 -> ra / rr
