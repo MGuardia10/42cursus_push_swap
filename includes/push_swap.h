@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:00 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/15 16:38:44 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:46:06 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	get_idxs(t_stack **stack_a, t_stack **stack_b);
 int		ft_is_max_or_min(t_stack *stack_a, t_stack *stack_b);
 t_stack	*find_biggest(t_stack *stack);
 t_stack	*find_smallest(t_stack *stack);
+t_stack	*find_closest(t_stack *node, t_stack *b);
 int		count_b_moves(t_stack *node, t_stack *b, int proxy_b, int count, int flag);
 
 // utils

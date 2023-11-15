@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:23:37 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/15 16:31:57 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 20:57:20 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size)
 	t_stack	*cheapest;
 	int		proxy;
 
-	while (size > 3)
+	while (size > 3 && !ft_is_sort(*stack_a))
 	{
 		get_idxs(stack_a, stack_b);
 		proxy = size / 2;
