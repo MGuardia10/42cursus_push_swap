@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:53 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 14:55:32 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:40:23 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ void	check_fit_int(long result, char **split)
 	}
 }
 
-long	get_min(t_stack *stack)
-{
-	t_stack	*aux;
-	long	min;
+// long	get_min(t_stack *stack)
+// {
+// 	t_stack	*aux;
+// 	long	min;
 
-	aux = stack;
-	min = stack->num;
-	while (aux)
-	{
-		if (aux->num < min)
-			min = aux->num;
-		aux = aux->next;
-	}
-	return (min);
-}
+// 	aux = stack;
+// 	min = stack->num;
+// 	while (aux)
+// 	{
+// 		if (aux->num < min)
+// 			min = aux->num;
+// 		aux = aux->next;
+// 	}
+// 	return (min);
+// }
 
 int	ft_is_sort_size(t_stack *stack_a, int size)
 {

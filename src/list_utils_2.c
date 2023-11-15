@@ -6,20 +6,20 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:19:14 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 20:50:25 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:49:17 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	get_idxs(t_stack *stack_a, t_stack *stack_b)
+void	get_idxs(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*aux_a;
 	t_stack	*aux_b;
 	int		idx;
 
-	aux_a = stack_a;
-	aux_b = stack_b;
+	aux_a = *stack_a;
+	aux_b = *stack_b;
 	idx = 0;
 	while (aux_a)
 	{
@@ -76,16 +76,35 @@ t_stack	*find_biggest(t_stack *stack)
 	return (max_node);
 }
 
-void	rotate_b_to_max(t_stack **stack_a, t_stack **stack_b, int proxy)
+t_stack	*find_smallest(t_stack *stack)
 {
-	t_stack	*bigest_node;
+	t_stack	*min_node;
+	t_stack	*aux;
 
-	bigest_node = find_biggest(*stack_b);
-	while ((*stack_b) != bigest_node)
+	min_node = NULL;
+	aux = stack;
+	while (aux)
 	{
-		if (bigest_node->idx <= proxy)
-			choose_move(stack_a, stack_b, "rb");
-		else
-			choose_move(stack_a, stack_b, "rrb");
+		if (!min_node)
+			min_node = aux;
+		if (min_node->num > aux->num)
+			min_node = aux;
+		aux = aux->next;
 	}
+	return (min_node);
+}
+
+int	count_b_moves(t_stack *node, t_stack *b, int proxy_b, int count, int flag)
+{
+	int	index;
+
+	index = node->idx;
+	if (flag == 0 && node->idx <= proxy_b)
+		return (count_upper_moves(count, index));
+	else if (flag == 1 && node->idx >= proxy_b)
+		return (count_lower_moves(count, index, b));
+	else if (node->idx < proxy_b)
+		return (index);
+	else
+		return (ft_stack_size(b) - index);
 }
