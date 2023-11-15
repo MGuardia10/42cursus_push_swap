@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:11:50 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/15 10:12:36 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:15:32 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size)
 			cheapest = find_cheapest(stack_a, stack_b, proxy);
             printf("\nnbr chepaest node -> %ld", cheapest_node->num);
             printf("\nidx chepaest node -> %d\n", cheapest_node->idx);
-			// while (cheapest_node != (*stack_a) && )
+			// while (cheapest != (*stack_a) || cheapest->target != (*stack_b))
 			//     rotate_ab_to_cheapest(stack_a, stack_b, cheapest_node, proxy);
 			//choose_move(stack_a, stack_b, "pb");
 		}
