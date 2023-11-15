@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   list_utils_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:38:51 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 14:55:11 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:01:30 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	fill_stack(t_stack **stack, long num)
 		new_node->prev = last_node;
 	}
 	new_node->num = num;
+	new_node->target = NULL;
 }
 
 t_stack	*ft_stack_last(t_stack *stack)

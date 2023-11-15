@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:11:50 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/14 14:53:56 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:12:36 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,26 @@ int	count_b_moves(t_stack *node, t_stack *b, int proxy_b, int count, int flag)
 t_stack	*find_closest(t_stack *node, t_stack *b)
 {
 	t_stack	*aux;
-	t_stack	*closest;
+	long	closest_nbr;
 
-	aux = b;
-	closest = NULL;
     if (ft_is_max_or_min(node, b))
-        closest = find_biggest(b);
+        node->target = find_biggest(b);
     else
     {
-        while (aux && !closest)
+		aux = b;
+		closest_nbr = INT_MIN;
+        while (aux)
         {
-            if (aux->prev == NULL && node->num < aux->num)
-                closest = aux;
-            else if (aux->prev && node->num < aux->prev->num && node->num > aux->num)
-                closest = aux;
-            else if (!aux->next)
-                closest = aux;
-            else
-                aux = aux->next;
+            if (aux->num < node->num)
+			{
+				if (aux->num >= closest_nbr)
+					node->target = aux;
+				closest_nbr = aux->num;
+			}
+            aux = aux->next;
         }
     }
-    return (closest);
+    return (node->target);
 }
 
 int	ft_count_moves(t_stack *node, t_stack *a, t_stack *b, int proxy_a)
@@ -131,6 +130,8 @@ t_stack	*find_cheapest(t_stack **stack_a, t_stack **stack_b, int proxy)
 	while (aux_a)
 	{
 		count = ft_count_moves(aux_a, *stack_a, *stack_b, proxy);
+		if (count == 0)
+			return (aux_a);
 		if (count < min_count)
 		{
 			min_count = count;
@@ -148,7 +149,7 @@ t_stack	*find_cheapest(t_stack **stack_a, t_stack **stack_b, int proxy)
 
 void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	t_stack	*cheapest_node;
+	t_stack	*cheapest;
 	int		proxy;
 
 	while (size > 3)
@@ -166,12 +167,12 @@ void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size)
             ft_print_stack(*stack_a);
             ft_printf("\nstack_b\n-------\n");
             ft_print_stack(*stack_b);
-			cheapest_node = find_cheapest(stack_a, stack_b, proxy);
+			cheapest = find_cheapest(stack_a, stack_b, proxy);
             printf("\nnbr chepaest node -> %ld", cheapest_node->num);
             printf("\nidx chepaest node -> %d\n", cheapest_node->idx);
-			// while (cheapest_node != (*stack_a))
+			// while (cheapest_node != (*stack_a) && )
 			//     rotate_ab_to_cheapest(stack_a, stack_b, cheapest_node, proxy);
-			choose_move(stack_a, stack_b, "pb");
+			//choose_move(stack_a, stack_b, "pb");
 		}
 		size--;
 	}

@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:00 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 20:59:19 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:53:35 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_stack
 {
 	long			num;
 	int				idx;
+	struct s_stack	*target;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
