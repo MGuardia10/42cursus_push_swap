@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:00 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/15 19:46:06 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:13:13 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,13 @@ void	push(t_stack **stack_src, t_stack **stack_dst);
 
 // algorithm
 void	ft_manage_algorithms(t_stack **stack_a, t_stack **stack_b, int size);
-void	choose_move(t_stack **stack_a, t_stack **stack_b, char *str);
+void	choose_move(t_stack **stack_a, t_stack **stack_b, int pos);
 void	sort_three(t_stack **stack_a, t_stack **stack_b);
 void	big_size_algo(t_stack **stack_a, t_stack **stack_b, int size);
 void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size);
+
+t_stack	*find_cheapest(t_stack **stack_a, t_stack **stack_b, int proxy);
+void    rotate_ab_to_cheapest(t_stack **a, t_stack **b, t_stack *cheap, int proxy_a);
+
 
 #endif

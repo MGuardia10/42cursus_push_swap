@@ -6,27 +6,27 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:33:05 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/15 13:05:12 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:12:51 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	choose_move3(t_stack **stack_a, t_stack **stack_b, char *str)
+static void	choose_move3(t_stack **stack_a, t_stack **stack_b, int pos)
 {
-	if (ft_strncmp(str, "ss", ft_strlen(str)) == 0)
+	if (pos == 8)
 	{
 		swap(stack_a);
 		swap(stack_b);
 		ft_printf("ss\n");
 	}
-	else if (ft_strncmp(str, "rr", ft_strlen(str)) == 0)
+	else if (pos == 9)
 	{
 		rotate(stack_a);
 		rotate(stack_b);
 		ft_printf("rr\n");
 	}
-	else if (ft_strncmp(str, "rrr", ft_strlen(str)) == 0)
+	else if (pos == 10)
 	{
 		reverse_rotate(stack_a);
 		reverse_rotate(stack_b);
@@ -34,54 +34,54 @@ static void	choose_move3(t_stack **stack_a, t_stack **stack_b, char *str)
 	}
 }
 
-static void	choose_move2(t_stack **stack_a, t_stack **stack_b, char *str)
+static void	choose_move2(t_stack **stack_a, t_stack **stack_b, int pos)
 {
-	if (ft_strncmp(str, "ra", ft_strlen(str)) == 0)
+	if (pos == 4)
 	{
 		rotate(stack_a);
 		ft_printf("ra\n");
 	}
-	else if (ft_strncmp(str, "rb", ft_strlen(str)) == 0)
+	else if (pos == 5)
 	{
 		rotate(stack_b);
 		ft_printf("rb\n");
 	}
-	else if (ft_strncmp(str, "rra", ft_strlen(str)) == 0)
+	else if (pos == 6)
 	{
 		reverse_rotate(stack_a);
 		ft_printf("rra\n");
 	}
-	else if (ft_strncmp(str, "rrb", ft_strlen(str)) == 0)
+	else if (pos == 7)
 	{
 		reverse_rotate(stack_b);
 		ft_printf("rrb\n");
 	}
 	else
-		choose_move3(stack_a, stack_b, str);
+		choose_move3(stack_a, stack_b, pos);
 }
 
-void	choose_move(t_stack **stack_a, t_stack **stack_b, char *str)
+void	choose_move(t_stack **stack_a, t_stack **stack_b, int pos)
 {
-	if (ft_strncmp(str, "sa", ft_strlen(str)) == 0)
+	if (pos == 0)
 	{
 		swap(stack_a);
 		ft_printf("sa\n");
 	}
-	else if (ft_strncmp(str, "sb", ft_strlen(str)) == 0)
+	else if (pos == 1)
 	{
 		swap(stack_b);
 		ft_printf("sb\n");
 	}
-	else if (ft_strncmp(str, "pa", ft_strlen(str)) == 0)
+	else if (pos == 2)
 	{
 		push(stack_b, stack_a);
 		ft_printf("pa\n");
 	}
-	else if (ft_strncmp(str, "pb", ft_strlen(str)) == 0)
+	else if (pos == 3)
 	{
 		push(stack_a, stack_b);
 		ft_printf("pb\n");
 	}
 	else
-		choose_move2(stack_a, stack_b, str);
+		choose_move2(stack_a, stack_b, pos);
 }

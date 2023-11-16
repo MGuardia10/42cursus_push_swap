@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:11:50 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/15 20:58:50 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:15:45 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void    push_two_to_b(t_stack **stack_a, t_stack **stack_b, int *size_a)
 {
-    choose_move(stack_a, stack_b, "pb");
+    choose_move(stack_a, stack_b, 3);
     (*size_a)--;
     if ((*size_a) > 3 && !ft_is_sort(*stack_a))
     {
-        choose_move(stack_a, stack_b, "pb");
+        choose_move(stack_a, stack_b, 3);
         (*size_a)--;
     }
 }
@@ -52,6 +52,7 @@ t_stack	*find_target(t_stack *node, t_stack *stack_a)
 void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int		proxy_a;
+	int		proxy_b;
 	int		size_b;
 	t_stack	*target;
 	t_stack *first_a;
@@ -62,6 +63,8 @@ void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 	{
 		get_idxs(stack_a, stack_b);
 		proxy_a = ft_stack_size(*stack_a) / 2;
+		proxy_b = ft_stack_size(*stack_b) / 2;
+		// cheapest = find_cheapest(stack_b, stack_a, proxy_b);
 		target = find_target(*stack_b, *stack_a);
 		// printf("stack a num ----> %ld\n", (*stack_a)->num);
 		// printf("target num ----> %ld\n", target->num);
@@ -70,11 +73,13 @@ void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_a)->num != target->num)
 		{
 			if (target->idx <= proxy_a)
-				choose_move(stack_a, stack_b, "ra");
+				choose_move(stack_a, stack_b, 4);
 			else
-				choose_move(stack_a, stack_b, "rra");
+				choose_move(stack_a, stack_b, 6);
 		}
-		choose_move(stack_a, stack_b, "pa");
+		// while (cheapest != (*stack_b) || cheapest->target != (*stack_a))
+		// 	    rotate_ab_to_cheapest(stack_b, stack_a, cheapest, proxy_a);
+		choose_move(stack_a, stack_b, 2);
 		// ft_printf("stack_a\n-------\n");
 		// ft_print_stack(*stack_a);
 		// ft_printf("\nstack_b\n-------\n");
@@ -94,9 +99,9 @@ void	rotate_till_is_sort(t_stack **stack_a, t_stack **stack_b)
 	while (smallest != (*stack_a))
 	{
 		if (smallest->idx <= proxy)
-			choose_move(stack_a, stack_b, "ra");
+			choose_move(stack_a, stack_b, 4);
 		else
-			choose_move(stack_a, stack_b, "rra");
+			choose_move(stack_a, stack_b, 6);
 	}
 }
 
@@ -107,9 +112,9 @@ void    big_size_algo(t_stack **stack_a, t_stack **stack_b, int size)
         push_till_three(stack_a, stack_b, size);
 	if (!ft_is_sort(*stack_a))
     	sort_three(stack_a, stack_b);
-	// ft_printf("stack_a\n-------\n");
+	// ft_printf("\tstack_a\n-------\n");
 	// ft_print_stack(*stack_a);
-	// ft_printf("\nstack_b\n-------\n");
+	// ft_printf("\n\tstack_b\n-------\n");
 	// ft_print_stack(*stack_b);
     push_to_a(stack_a, stack_b);
     if (!ft_is_sort_size(*stack_a, ft_stack_size(*stack_a)))
