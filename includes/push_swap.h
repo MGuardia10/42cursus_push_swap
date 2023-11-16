@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:00 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/16 17:13:13 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:55:34 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_is_max_or_min(t_stack *stack_a, t_stack *stack_b);
 t_stack	*find_biggest(t_stack *stack);
 t_stack	*find_smallest(t_stack *stack);
 t_stack	*find_closest(t_stack *node, t_stack *b);
-int		count_b_moves(t_stack *node, t_stack *b, int proxy_b, int count, int flag);
+t_stack	*find_cheapest(t_stack **stack_a, t_stack **stack_b, int proxy);
 
 // utils
 int		check_sign(char **split, long i, int *j);
@@ -47,8 +47,8 @@ int		ft_is_sort_size(t_stack *stack_a, int size);
 int		ft_is_sort(t_stack *stack_a);
 void	ft_print_stack(t_stack *stack_a);
 int		get_index(t_stack *stack, long min);
-void	find_rotate_move(t_stack **stack_a, t_stack **stack_b, long nbr);
 int		ft_count_moves(t_stack *node, t_stack *a, t_stack *b, int proxy_a);
+int		count_b_moves(t_stack *node, t_stack *b, int count, int flag);
 int		count_upper_moves(int count, int index);
 int		count_lower_moves(int count, int index, t_stack *b);
 
@@ -57,16 +57,13 @@ void	swap(t_stack **stack);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 void	push(t_stack **stack_src, t_stack **stack_dst);
+void	choose_move(t_stack **stack_a, t_stack **stack_b, int pos);
 
 // algorithm
-void	ft_manage_algorithms(t_stack **stack_a, t_stack **stack_b, int size);
-void	choose_move(t_stack **stack_a, t_stack **stack_b, int pos);
+void	push_two_to_b(t_stack **stack_a, t_stack **stack_b, int *size_a);
+void	push_till_three(t_stack **stack_a, t_stack **stack_b, int size);
 void	sort_three(t_stack **stack_a, t_stack **stack_b);
-void	big_size_algo(t_stack **stack_a, t_stack **stack_b, int size);
-void    push_till_three(t_stack **stack_a, t_stack **stack_b, int size);
-
-t_stack	*find_cheapest(t_stack **stack_a, t_stack **stack_b, int proxy);
-void    rotate_ab_to_cheapest(t_stack **a, t_stack **b, t_stack *cheap, int proxy_a);
-
+void	push_to_a(t_stack **stack_a, t_stack **stack_b);
+void	rotate_till_is_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif

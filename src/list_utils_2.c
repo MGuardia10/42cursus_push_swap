@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:19:14 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/15 14:49:17 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:43:32 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,29 @@ t_stack	*find_smallest(t_stack *stack)
 	return (min_node);
 }
 
-int	count_b_moves(t_stack *node, t_stack *b, int proxy_b, int count, int flag)
+t_stack	*find_closest(t_stack *node, t_stack *b)
 {
-	int	index;
+	t_stack	*aux;
+	long	closest_nbr;
 
-	index = node->idx;
-	if (flag == 0 && node->idx <= proxy_b)
-		return (count_upper_moves(count, index));
-	else if (flag == 1 && node->idx >= proxy_b)
-		return (count_lower_moves(count, index, b));
-	else if (node->idx < proxy_b)
-		return (index);
+	if (ft_is_max_or_min(node, b))
+		node->target = find_biggest(b);
 	else
-		return (ft_stack_size(b) - index);
+	{
+		aux = b;
+		closest_nbr = INT_MIN;
+		while (aux)
+		{
+			if (aux->num < node->num)
+			{
+				if (aux->num >= closest_nbr)
+				{
+					node->target = aux;
+					closest_nbr = aux->num;
+				}
+			}
+			aux = aux->next;
+		}
+	}
+	return (node->target);
 }
