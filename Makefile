@@ -7,7 +7,7 @@ LIBFT = libft/libft.a
 
 # SOURCE FILES
 SRC_DIR			=	src/
-SRC_BONUS_DIR	=	checker/
+SRC_BONUS_DIR	=	bonus/
 SRC_FILES		= 	main.c \
 					list_utils_1.c \
 					list_utils_2.c \
@@ -22,8 +22,12 @@ SRC_FILES		= 	main.c \
 					sort_three.c \
 					push_to_a.c \
 					rotate_till_is_sort.c
-# big_size_algo.c
-BONUS_FILES		=	checker.c
+BONUS_FILES		=	checker.c \
+					parsing_checker.c \
+					list_utils_checker.c \
+					utils_checker.c \
+					moves_checker.c \
+					choose_move_checker.c
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_BONUS		=	$(addprefix $(SRC_BONUS_DIR), $(BONUS_FILES))
 

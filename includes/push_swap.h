@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:00 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/16 19:55:34 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:03:55 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	swap(t_stack **stack);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 void	push(t_stack **stack_src, t_stack **stack_dst);
-void	choose_move(t_stack **stack_a, t_stack **stack_b, int pos);
+void	choose_move(t_stack **stack_a, t_stack **stack_b, char *str);
 
 // algorithm
 void	push_two_to_b(t_stack **stack_a, t_stack **stack_b, int *size_a);

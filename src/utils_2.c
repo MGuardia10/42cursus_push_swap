@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:31 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/16 19:55:10 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/16 21:08:40 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,10 @@ int	ft_count_moves(t_stack *node, t_stack *a, t_stack *b, int proxy_a)
 	int		count;
 	int		flag;
 	t_stack	*closest_node_b;
-	int		proxy_b;
 
 	count = 0;
 	flag = 0;
 	closest_node_b = find_closest(node, b);
-	proxy_b = ft_stack_size(b) / 2;
 	if (node->idx <= proxy_a)
 	{
 		count = node->idx;

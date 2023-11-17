@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:06:57 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/16 19:14:17 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:01:50 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,23 @@ static t_stack	*find_target(t_stack *node, t_stack *stack_a)
 void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int		proxy_a;
-	int		proxy_b;
 	int		size_b;
 	t_stack	*target;
-	t_stack	*first_a;
 
-	first_a = *stack_a;
 	size_b = ft_stack_size(*stack_b);
 	while (size_b > 0)
 	{
 		get_idxs(stack_a, stack_b);
 		proxy_a = ft_stack_size(*stack_a) / 2;
-		proxy_b = ft_stack_size(*stack_b) / 2;
 		target = find_target(*stack_b, *stack_a);
 		while ((*stack_a)->num != target->num)
 		{
 			if (target->idx <= proxy_a)
-				choose_move(stack_a, stack_b, 4);
+				choose_move(stack_a, stack_b, "ra");
 			else
-				choose_move(stack_a, stack_b, 6);
+				choose_move(stack_a, stack_b, "rra");
 		}
-		choose_move(stack_a, stack_b, 2);
+		choose_move(stack_a, stack_b, "pa");
 		size_b--;
 	}
 }

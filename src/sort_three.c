@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:09:07 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/16 17:17:10 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:02:36 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	sort_three(t_stack **stack_a, t_stack **stack_b)
 	num2 = (*stack_a)->next->num;
 	num3 = (*stack_a)->next->next->num;
 	if (num1 > num2 && num2 < num3 && num1 < num3)
-		choose_move(stack_a, stack_b, 0);
+		choose_move(stack_a, stack_b, "sa");
 	else if (num1 > num2 && num2 > num3 && num1 > num3)
 	{
-		choose_move(stack_a, stack_b, 0);
-		choose_move(stack_a, stack_b, 6);
+		choose_move(stack_a, stack_b, "sa");
+		choose_move(stack_a, stack_b, "rra");
 	}
 	else if (num1 > num2 && num2 < num3 && num1 > num3)
-		choose_move(stack_a, stack_b, 4);
+		choose_move(stack_a, stack_b, "ra");
 	else if (num1 < num2 && num2 > num3 && num1 < num3)
 	{
-		choose_move(stack_a, stack_b, 0);
-		choose_move(stack_a, stack_b, 4);
+		choose_move(stack_a, stack_b, "sa");
+		choose_move(stack_a, stack_b, "ra");
 	}
 	else if (num1 < num2 && num2 > num3 && num1 > num3)
-		choose_move(stack_a, stack_b, 6);
+		choose_move(stack_a, stack_b, "rra");
 }

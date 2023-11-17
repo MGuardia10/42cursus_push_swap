@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_two_to_b.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 18:57:03 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/17 10:00:56 by mguardia         ###   ########.fr       */
+/*   Created: 2023/11/17 09:49:34 by mguardia          #+#    #+#             */
+/*   Updated: 2023/11/17 09:57:34 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-void	push_two_to_b(t_stack **stack_a, t_stack **stack_b, int *size_a)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	choose_move(stack_a, stack_b, "pb");
-	(*size_a)--;
-	if ((*size_a) > 3 && !ft_is_sort(*stack_a))
-	{
-		choose_move(stack_a, stack_b, "pb");
-		(*size_a)--;
-	}
+	size_t	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

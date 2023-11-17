@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:59:51 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/13 14:51:41 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:40:13 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_error(void)
 {
-	write(STDERR, "Error\n", 6);
+	ft_printf("Error\n");
 	exit(EXIT_FAILURE);
 }

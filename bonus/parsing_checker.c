@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 10:47:58 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/17 12:01:00 by mguardia         ###   ########.fr       */
+/*   Created: 2023/11/17 12:03:22 by mguardia          #+#    #+#             */
+/*   Updated: 2023/11/17 12:42:35 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 static void	check_doubles(t_stack *stack_a)
 {
@@ -73,7 +73,7 @@ static void	manage_strings(t_stack **stack_a, char **split)
 	}
 }
 
-void	ft_parse_args(char **argv, t_stack **stack_a)
+void	ft_parse_args_checker(char **argv, t_stack **stack_a)
 {
 	long	i;
 	char	**split;
