@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:13:02 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/17 12:13:38 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/17 23:20:38 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*aux1;
 	t_stack	*aux2;
 
-	if (!(*stack))
+	if (!(*stack) || !(*stack)->next)
 		return ;
 	aux1 = *stack;
 	while ((*stack)->next)

@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:04:17 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/17 12:19:38 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/17 23:20:54 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,8 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		ft_parse_args_checker(argv, &stack_a);
-		if (ft_is_sort(stack_a))
-		{
-			ft_printf("OK\n");
-			ft_stack_clear(&stack_a);
-			exit(0);
-		}
+		if (!stack_a)
+			ft_error();
 		read_stdin(&stack_a, &stack_b);
 		if (ft_is_sort(stack_a) && ft_stack_size(stack_b) == 0)
 			ft_printf("OK\n");
