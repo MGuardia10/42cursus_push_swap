@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:11:42 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/17 12:44:07 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:49:01 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	choose_move_c_2(t_stack **stack_a, t_stack **stack_b, char *str)
 {
-    if (ft_strcmp(str, "rr\n") == 0)
+	if (ft_strcmp(str, "rr\n") == 0)
 	{
 		rotate(stack_a);
 		rotate(stack_b);
@@ -27,8 +27,8 @@ static void	choose_move_c_2(t_stack **stack_a, t_stack **stack_b, char *str)
 	else
 	{
 		ft_stack_clear(stack_a);
-        ft_stack_clear(stack_b);
-        free(str);
+		ft_stack_clear(stack_b);
+		free(str);
 		ft_error();
 	}
 }
@@ -56,6 +56,6 @@ void	choose_move_c(t_stack **stack_a, t_stack **stack_b, char *str)
 		swap(stack_a);
 		swap(stack_b);
 	}
-    else
-	    choose_move_c_2(stack_a, stack_b, str);
+	else
+		choose_move_c_2(stack_a, stack_b, str);
 }

@@ -6,7 +6,7 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:47:19 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/17 10:41:08 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:54:01 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	big_size_algo(t_stack **stack_a, t_stack **stack_b, int size)
 static void	ft_manage_algorithms(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	if (size == 2 && ((*stack_a)->num > (*stack_a)->next->num))
-		choose_move(stack_a, stack_b, 0);
+		choose_move(stack_a, stack_b, "sa");
 	else if (size == 3)
 		sort_three(stack_a, stack_b);
 	else

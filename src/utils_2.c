@@ -6,23 +6,11 @@
 /*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:31 by mguardia          #+#    #+#             */
-/*   Updated: 2023/11/16 21:08:40 by mguardia         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:59:00 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// void	ft_print_stack(t_stack *stack)
-// {
-// 	t_stack	*aux;
-
-// 	aux = stack;
-// 	while (aux)
-// 	{
-// 		printf("%ld\n", aux->num);
-// 		aux = aux->next;
-// 	}
-// }
 
 int	get_index(t_stack *stack, long min)
 {
