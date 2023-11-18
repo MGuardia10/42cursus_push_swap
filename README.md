@@ -47,7 +47,7 @@ or with the checker:
 The push_swap program comes with a Makefile that includes the following rules:
 
 - `all`: compiles the program.
-- `re`: recompiles the programs.
+- `re`: recompiles the program.
 - `bonus`: compiles bonus files for the bonus features (checker).
 - `clean`: removes all object files.
 - `fclean`: removes all object files and push_swap/checker programs.
