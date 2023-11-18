@@ -8,6 +8,8 @@ The bonus part is a checker program that verifies if all the moves made are allo
 
 You can see the subject [**HERE.**](https://github.com/MGuardia10/42cursus/blob/main/subjects/en/push_swap_subject_en.pdf)
 
+![Sorting 500 numbers](?loop=1&autoplay=1)
+
 ## Valid moves
 | Moves | Explanation |
 | :--- | :--- |
