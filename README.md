@@ -2,7 +2,7 @@
 
 This project is about sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions. Allowed movements are specified below.
 
-The bonus part is a checker program that verifies if all the moves made are allowed and if the stack is correctly ordered once there are no moves left.
+The bonus part is a checker program that verifies if all the moves made are allowed and if the stack is correctly sort once there are no moves left.
 
 ![C](https://img.shields.io/badge/C-a?style=for-the-badge&logo=C&color=grey)
 
