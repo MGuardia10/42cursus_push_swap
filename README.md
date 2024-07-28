@@ -5,6 +5,7 @@ This project is about sorting data on a stack, with a limited set of instruction
 The bonus part is a checker program that verifies if all the moves made are allowed and if the stack is correctly sort once there are no moves left.
 
 ![C](https://img.shields.io/badge/C-a?style=for-the-badge&logo=C&color=grey)
+![Makefile](https://img.shields.io/badge/Makefile-a?style=for-the-badge&logo=monster&logoColor=orange&color=grey)
 
 You can see the subject [**HERE.**](https://github.com/MGuardia10/42cursus/blob/main/subjects/en/push_swap_subject_en.pdf)
 
